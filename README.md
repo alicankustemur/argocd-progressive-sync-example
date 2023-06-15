@@ -1,5 +1,7 @@
 # argocd-progressive-sync-example
 
+First, create a kind cluster
+
 ```yaml
 cat <<EOF | kind create cluster --config=-
 kind: Cluster
