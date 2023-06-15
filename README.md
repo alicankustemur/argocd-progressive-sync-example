@@ -1,0 +1,1 @@
+# argocd-progressive-sync-example
