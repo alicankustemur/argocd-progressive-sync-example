@@ -26,13 +26,13 @@ EOF
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 ```
 
-
+Install ArgoCD
 ```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 # wait until all pods are running
-kubectl get pods                                                                                
+kubectl get pods -n argocd                                                                               
 
 NAME                                                READY   STATUS    RESTARTS   AGE
 argocd-application-controller-0                     1/1     Running   0          10s
@@ -44,7 +44,7 @@ argocd-repo-server-96b577c5-dwdhk                   1/1     Running   0         
 argocd-server-7c7b5568cc-wlf2b                      1/1     Running   0          10s
 ```
 
-add following config to `argocd-cmd-params-cm` ConfigMap
+to enable Progressive Sync, add following config to `argocd-cmd-params-cm` ConfigMap
 
 ```yaml
   applicationsetcontroller.enable.progressive.syncs: "true"
